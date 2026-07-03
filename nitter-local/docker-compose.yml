@@ -1,0 +1,22 @@
+services:
+  nitter:
+    image: zedeus/nitter:latest
+    container_name: nitter
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./nitter.conf:/src/nitter.conf:ro
+      - ./sessions.jsonl:/src/sessions.jsonl:ro
+    depends_on:
+      - nitter-redis
+    restart: unless-stopped
+
+  nitter-redis:
+    image: redis:7-alpine
+    container_name: nitter-redis
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+
+volumes:
+  redis-data:
