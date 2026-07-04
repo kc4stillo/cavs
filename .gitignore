@@ -4,7 +4,7 @@ sessions.jsonl
 
 # data
 data/raw/
-data/interim/
+data/clean
 
 # Python
 __pycache__/
