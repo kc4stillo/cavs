@@ -1,14 +1,14 @@
 # %%
 import csv
-from datetime import datetime, timezone
+from datetime import datetime
 
 from playwright.sync_api import sync_playwright
 
 from utilities import random_long_wait
 
 # %%
-START_DATE = "07012026"
-END_DATE = "07032026"
+START_DATE = "2026-07-01"
+END_DATE = "2026-07-04"
 
 
 # %%
@@ -20,8 +20,6 @@ def main(p):
         search_query = f"{query}"
 
         page = search(page, search_query)
-
-        random_long_wait()
 
         scrape(page, search_query)
 
@@ -56,9 +54,43 @@ def open_page(p):
 
 
 def search(page, query):
-    page.locator('input[name="q"]').click()
-    page.locator('input[name="q"]').fill(query)
+    """
+    Search local Nitter for a query while optionally filtering dates
+    and excluding native retweets.
+
+    Parameters
+    ----------
+    page : playwright.sync_api.Page
+        Active Playwright page on your local Nitter instance.
+    query : str
+        Search query, e.g. "Cavs", "#LetEmKnow", "Donovan Mitchell".
+
+    Returns
+    -------
+    page : playwright.sync_api.Page
+        The same page after the search has been submitted.
+    """
+    # Fill search query
+    search_input = page.locator('input[name="q"]')
+    search_input.click()
+    search_input.fill(query)
+
+    # Submit search
     page.keyboard.press("Enter")
+
+    # Open the advanced search / filter panel
+    page.locator('label[for="search-panel-toggle"]').click()
+
+    # Exclude native retweets if the checkbox exists and is not already checked
+    page.locator('label[title="e-nativeretweets"]').click()
+
+    # Optional date filters
+    if START_DATE:
+        page.locator('.search-panel input[name="since"][type="date"]').fill(START_DATE)
+    if END_DATE:
+        page.locator('.search-panel input[name="until"][type="date"]').fill(END_DATE)
+
+    page.locator('form:has(input[name="q"]) button[type="submit"]').click()
 
     return page
 
@@ -129,11 +161,7 @@ def grab_tweet_date(item):
     if not date_str:
         return None
 
-    return (
-        datetime.strptime(date_str.strip(), "%b %d, %Y · %I:%M %p UTC")
-        .replace(tzinfo=timezone.utc)
-        .astimezone(PREFERRED_TIME_ZONE)
-    )
+    return datetime.strptime(date_str.strip(), "%b %d, %Y · %I:%M %p UTC")
 
 
 def grab_tweet_stats(item):
@@ -173,6 +201,9 @@ def scroll_and_click(page):
 
     if load_more.count() > 0:
         load_more.first.click()
+
+    random_long_wait()
+    random_long_wait()
 
     return page
 
