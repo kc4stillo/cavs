@@ -2,19 +2,19 @@
 base = "dark"
 
 # Stockpeers-inspired dark dashboard surface
-backgroundColor = "#0f172b"
-secondaryBackgroundColor = "#1d293d"
-textColor = "#e2e8f0"
+backgroundColor = "#1a1b1f"
+secondaryBackgroundColor = "#484a50"
+textColor = "#ffffff"
 
-# Cavs accent, but cleaner than a loud wine background
-primaryColor = "#FDBB30"
+# Cavs accent, kept as a small highlight instead of a loud background
+primaryColor = "#d3b97f"
 
 # Native Streamlit polish
 showWidgetBorder = true
-borderColor = "#314158"
+borderColor = "#4b4d50"
 dataframeHeaderBackgroundColor = "#1d293d"
 
-# Same design direction as demo-stockpeers
+# Clean, minimalist typography similar to demo-stockpeers
 font = "'Space Grotesk':https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
 baseFontWeight = 300
 baseFontSize = 14
