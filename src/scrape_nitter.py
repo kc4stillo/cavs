@@ -43,7 +43,7 @@ def txt_to_list():
 
 
 def open_page(p):
-    browser = p.chromium.launch(headless=False)
+    browser = p.chromium.launch(headless=True)
 
     context = browser.new_context()
     page = context.new_page()
@@ -83,6 +83,7 @@ def search(page, query):
 
     # Exclude native retweets if the checkbox exists and is not already checked
     page.locator('label[title="e-nativeretweets"]').click()
+    page.locator('label[title="e-replies"]').click()
 
     # Optional date filters
     if START_DATE:
