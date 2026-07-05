@@ -82,6 +82,10 @@ tweets_clean <- tweets_raw %>%
     convert = TRUE,
     remove = TRUE
   ) %>%
+  filter(
+    date >= as.POSIXct("2026-06-01 00:00:00", tz = "UTC"),
+    date <= as.POSIXct("2026-06-30 23:59:59", tz = "UTC")
+  ) %>%
   mutate(
     language = detect_language(tweet),
 
@@ -105,7 +109,8 @@ tweets_clean <- tweets_raw %>%
     !is.na(query),
     query != "",
     language == "en",
-    query_in_tweet
+    query_in_tweet,
+    word_count <= 200 # ADDED THIS LINE: keep tweets with 200 words or fewer
   ) %>%
   select(
     tweet,

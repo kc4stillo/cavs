@@ -307,10 +307,10 @@ def assign_narrative(text):
     # cavs draft discussion
     if (
         re.search(
-            r"\b(thomas|maleek thomas|udeh|nba draft|draft|drafted|draft pick|draft picks|lottery|rookie|rookies|prospect|prospects|summer league|first round|second round)\b",
+            r"\b(thomas|will go|maleek thomas|udeh|nba draft|draft|drafted|draft pick|draft picks|lottery|rookie|rookies|prospect|prospects|summer league|first round|second round)\b",
             text,
         )
-        and non_cavs_destination_count < 1
+        and non_cavs_destination_count < 2
     ):
         return "nba_draft"
 
