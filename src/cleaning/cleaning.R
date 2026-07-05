@@ -11,7 +11,7 @@ library(cld3)
 # -----------------------------
 
 raw_path <- "../../data/raw/tweets_raw.csv"
-out_path <- "../../data/clean/tweets_clean.csv"
+out_path <- "../../data/int/tweets_int.csv"
 
 # -----------------------------
 # helper: clean tweet text
