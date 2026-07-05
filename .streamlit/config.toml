@@ -1,0 +1,23 @@
+[theme]
+base = "dark"
+
+# Stockpeers-inspired dark dashboard surface
+backgroundColor = "#0f172b"
+secondaryBackgroundColor = "#1d293d"
+textColor = "#e2e8f0"
+
+# Cavs accent, but cleaner than a loud wine background
+primaryColor = "#FDBB30"
+
+# Native Streamlit polish
+showWidgetBorder = true
+borderColor = "#314158"
+dataframeHeaderBackgroundColor = "#1d293d"
+
+# Same design direction as demo-stockpeers
+font = "'Space Grotesk':https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
+baseFontWeight = 300
+baseFontSize = 14
+headingFont = "Space Grotesk"
+headingFontWeights = [300, 400, 400, 300, 300, 300]
+headingFontSizes = ["2.5rem", "1.5rem", "1rem"]
