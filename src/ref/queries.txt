@@ -1,6 +1,3 @@
-"cavs"
-"cleveland cavaliers"
-"kenny atkinson"
 "james harden"
 "donovan mitchell"
 "max strus"

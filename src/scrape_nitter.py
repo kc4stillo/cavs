@@ -7,8 +7,8 @@ from playwright.sync_api import sync_playwright
 from utilities import random_long_wait
 
 # %%
-START_DATE = "2026-07-01"
-END_DATE = "2026-07-04"
+START_DATE = "2026-06-01"
+END_DATE = "2026-07-01"
 
 
 # %%
@@ -43,7 +43,7 @@ def txt_to_list():
 
 
 def open_page(p):
-    browser = p.chromium.launch(headless=True)
+    browser = p.chromium.launch(headless=False)
 
     context = browser.new_context()
     page = context.new_page()

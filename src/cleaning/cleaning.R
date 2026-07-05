@@ -74,6 +74,7 @@ tweets_clean <- tweets_raw %>%
     query = clean_query_text(query),
     stats = str_remove_all(stats, "[()]")
   ) %>%
+  filter(!duplicated(tweet, fromLast = TRUE)) %>%
   separate(
     stats,
     into = c("views", "likes", "comments", "retweets"),
