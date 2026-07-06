@@ -35,26 +35,11 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    /* Make the x button on selected multiselect chips easier to click */
-    div[data-baseweb="tag"] span[role="button"] {
-        width: 26px !important;
-        height: 26px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        margin-left: 6px !important;
-    }
-
-    div[data-baseweb="tag"] svg {
-        width: 18px !important;
-        height: 18px !important;
-    }
-
-    /* Optional: make the selected chips a little taller too */
-    div[data-baseweb="tag"] {
-        min-height: 32px !important;
-        padding-top: 4px !important;
-        padding-bottom: 4px !important;
+    /* Make ONLY selected st.pills text dark so it stands out on yellow */
+    div[data-testid="stPills"] button[aria-selected="true"] *,
+    div[data-testid="stPills"] button[aria-pressed="true"] *,
+    div[data-testid="stPills"] button[aria-checked="true"] * {
+        color: #0e1117 !important;
     }
     </style>
     """,
