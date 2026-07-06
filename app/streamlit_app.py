@@ -35,11 +35,28 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    /* Make ONLY selected st.pills text dark so it stands out on yellow */
-    div[data-testid="stPills"] button[aria-selected="true"] *,
-    div[data-testid="stPills"] button[aria-pressed="true"] *,
-    div[data-testid="stPills"] button[aria-checked="true"] * {
+    /* Selected option chips inside st.multiselect dropdowns */
+    div[data-baseweb="select"] div[data-baseweb="tag"],
+    div[data-baseweb="select"] div[data-baseweb="tag"] *,
+    div[data-baseweb="select"] span[data-baseweb="tag"],
+    div[data-baseweb="select"] span[data-baseweb="tag"] * {
         color: #0e1117 !important;
+        -webkit-text-fill-color: #0e1117 !important;
+    }
+
+    /* Text inside selected chips */
+    div[data-baseweb="select"] div[data-baseweb="tag"] span,
+    div[data-baseweb="select"] div[data-baseweb="tag"] div,
+    div[data-baseweb="select"] div[data-baseweb="tag"] p {
+        color: #0e1117 !important;
+        -webkit-text-fill-color: #0e1117 !important;
+    }
+
+    /* The x icon inside selected chips */
+    div[data-baseweb="select"] div[data-baseweb="tag"] svg,
+    div[data-baseweb="select"] span[data-baseweb="tag"] svg {
+        color: #0e1117 !important;
+        fill: #0e1117 !important;
     }
     </style>
     """,
